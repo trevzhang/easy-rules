@@ -35,9 +35,17 @@ public class WeatherRule {
     public boolean itRains(@Fact("rain") boolean rain) {
         return rain;
     }
-    
+
     @Action
     public void takeAnUmbrella() {
         System.out.println("It rains, take an umbrella!");
+    }
+
+    @Action(order = 1)
+    public void goToStarbucks(@Fact("rain") boolean rain) {
+        if (rain) {
+            System.out.println("It rains...");
+        }
+        System.out.println("Going to Starbucks, enjoy the moment.");
     }
 }
